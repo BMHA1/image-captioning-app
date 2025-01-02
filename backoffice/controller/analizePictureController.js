@@ -20,6 +20,12 @@ module.exports.getAnalyze = async (req, res) => {
   
       const analysisResult = await analyzePictureService.handleAnalyze(imagePath, typeServices);
   
+      if (req.file) {
+        fs.unlink(path.join(__dirname, `../public/uploads/${req.file.filename}`), (err) => {
+          if (err) console.error("Error deleting file:", err);
+        });
+      }
+  
       return res.status(200).json(utils.responseDefaultSuccess(analysisResult));
     } catch (error) {
       console.error("Error in getAnalyze:", error.message || error);

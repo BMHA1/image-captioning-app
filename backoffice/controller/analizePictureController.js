@@ -26,7 +26,7 @@ module.exports.getAnalyze = async (req, res) => {
         });
       }
   
-      return res.status(200).json(utils.responseDefaultSuccess(analysisResult));
+      return res.status(200).json(utils.responseSuccess(analysisResult));
     } catch (error) {
       console.error("Error in getAnalyze:", error.message || error);
       return res.status(500).json(utils.responseError("Failed to process request", [{ msg: error.message }]));

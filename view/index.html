@@ -8,18 +8,23 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
     <link rel="stylesheet" href="../style/style.css" />
   </head>
   <body class="bg-light text-dark">
     <div class="container py-5">
       <header class="text-center mb-5">
         <h1 class="display-4 fw-bold">Image Captioning App</h1>
-        <p class="lead">Upload an image and let AI generate captions for you!</p>
+        <p class="lead">
+          Upload an image and let AI generate captions for you!
+        </p>
       </header>
 
-      <div class="row justify-content-center g-5">
-        <section class="col-lg-6">
+      <div class="row justify-content-center">
+        <section class="col-lg-8">
           <form id="image-form" class="p-4 bg-white rounded shadow-sm">
             <div class="form-check form-switch mb-4">
               <input
@@ -35,17 +40,21 @@
             </div>
 
             <div id="upload-container" class="mb-4">
-              <label for="image-upload" class="form-label">Upload an Image:</label>
-              <input 
-                type="file" 
-                id="image-upload" 
-                class="form-control" 
-                accept="image/*" 
-                aria-describedby="imageHelp" 
+              <label for="image-upload" class="form-label"
+                >Upload an Image:</label
+              >
+              <input
+                type="file"
+                id="image-upload"
+                class="form-control"
+                accept="image/*"
+                aria-describedby="imageHelp"
               />
-              <div id="imageHelp" class="form-text">Supported formats: JPG, PNG, JPEG.</div>
+              <div id="imageHelp" class="form-text">
+                Supported formats: JPG, PNG, JPEG.
+              </div>
             </div>
-            
+
             <div id="url-container" class="mb-4 d-none">
               <label for="image-url" class="form-label">Enter Image URL:</label>
               <input
@@ -54,14 +63,20 @@
                 class="form-control"
                 aria-describedby="urlHelp"
               />
-              <div id="urlHelp" class="form-text">Provide a valid image URL.</div>
+              <div id="urlHelp" class="form-text">
+                Provide a valid image URL.
+              </div>
             </div>
 
             <div class="mb-4">
-              <label for="api-select" class="form-label">Choose an AI Service:</label>
+              <label for="api-select" class="form-label"
+                >Choose an AI Service:</label
+              >
               <select id="api-select" class="form-select" required>
                 <option value="google">Google Cloud Vision API</option>
-                <option value="azure">Microsoft Azure Computer Vision API</option>
+                <option value="azure">
+                  Microsoft Azure Computer Vision API
+                </option>
                 <option value="clarifai">Clarifai API</option>
               </select>
             </div>
@@ -74,39 +89,54 @@
           </form>
         </section>
 
-        <section class="col-lg-6">
-          <h2 class="text-center mb-4">How to Use</h2>
+        <section class="col-lg-4">
           <div class="row g-3">
-            <div class="col-md-6">
-              <div class="card h-100 border-0 shadow-sm">
+            <div class="col-md-12">
+              <div class="card border-0 shadow-sm">
                 <div class="card-body text-center">
-                  <div class="mb-3 text-primary">
-                    <i class="bi bi-image fs-1"></i>
+                  <div class="row">
+                    <div class="mb-3 text-primary col-md-4">
+                      <i class="bi bi-image fs-1"></i>
+                    </div>
+                    <div class="col-md-8">
+                      <h5 class="card-title">Step 1</h5>
+                      <p class="card-text">Upload an image or enter its URL.</p>
+                    </div>
                   </div>
-                  <h5 class="card-title">Step 1</h5>
-                  <p class="card-text">Upload an image or enter its URL.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="card h-100 border-0 shadow-sm">
-                <div class="card-body text-center">
-                  <div class="mb-3 text-success">
-                    <i class="bi bi-sliders fs-1"></i>
-                  </div>
-                  <h5 class="card-title">Step 2</h5>
-                  <p class="card-text">Choose an AI service from the dropdown menu.</p>
                 </div>
               </div>
             </div>
             <div class="col-md-12">
-              <div class="card h-100 border-0 shadow-sm">
+              <div class="card border-0 shadow-sm">
                 <div class="card-body text-center">
-                  <div class="mb-3 text-warning">
-                    <i class="bi bi-arrow-right-circle fs-1"></i>
+                  <div class="row">
+                    <div class="mb-3 text-success col-md-4">
+                      <i class="bi bi-sliders fs-1"></i>
+                    </div>
+                    <div class="col-md-8">
+                      <h5 class="card-title">Step 2</h5>
+                      <p class="card-text">
+                        Choose an AI service from the dropdown menu.
+                      </p>
+                    </div>
                   </div>
-                  <h5 class="card-title">Step 3</h5>
-                  <p class="card-text">Click "Generate Caption" and view the result below!</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="card border-0 shadow-sm">
+                <div class="card-body text-center">
+                  <div class="row">
+                    <div class="mb-3 text-warning col-md-4">
+                      <i class="bi bi-arrow-right-circle fs-1"></i>
+                    </div>
+                    <div class="col-md-8">
+                      <h5 class="card-title">Step 3</h5>
+                      <p class="card-text">
+                        Click "Generate Caption" and view the result below!
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

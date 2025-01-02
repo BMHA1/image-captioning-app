@@ -21,7 +21,7 @@ Este proyecto es una **📜 aplicación de generación de subtítulos para imág
 ### **⚙️ Backend**
 
 - **Node.js** v16 o superior.
-- **npm** v8 o superior.
+- **pnpm** v9.0 
 - **APIs configuradas**:
     - 🤖 Google Cloud Vision API.
     - 🖥️ Microsoft Azure Computer Vision API.
@@ -51,9 +51,12 @@ Ngrok se utiliza en este proyecto para exponer el servidor backend local a una U
 ngrok http 3000
 ```
 
-3️⃣ Copia la URL proporcionada por Ngrok (por ejemplo, `https://<your-ngrok-id>.ngrok.io`) y configúrala como `PUBLIC_URL` en el archivo `.env`.
+3️⃣ Copia la URL proporcionada por Ngrok (por ejemplo, `https://<your-ngrok-id>.ngrok.io`) y configúrala como `PUBLIC_URL` en el archivo `.env` y en `app.js`.
 
 ```env
+PUBLIC_URL=https://<your-ngrok-id>.ngrok.io
+```
+```app.js
 PUBLIC_URL=https://<your-ngrok-id>.ngrok.io
 ```
 
@@ -81,16 +84,18 @@ CLARIFAI_APPLICATION_API_KEY=your-clarifai-api-key
 
 ### 3️⃣ Instalar dependencias
 
-Ejecuta el siguiente comando para instalar las dependencias necesarias:
+Ejecuta los siguientes comandos para instalar las dependencias necesarias:
 
 ```bash
-npm install
+cd backoffice
+
+pnpm install
 ```
 
 ### 4️⃣ Iniciar el servidor
 
 ```bash
-npm start
+pnpm start
 ```
 
 El servidor estará disponible en `http://localhost:3000`.

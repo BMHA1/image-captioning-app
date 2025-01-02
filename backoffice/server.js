@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 
-
 const analizePictureRoutes = require("./routes/analizePictureRoutes");
 const dotenv = require('dotenv');
 dotenv.config();
@@ -22,7 +21,6 @@ app.get('/test', (req, res) => {
 
 
 let port = process.env.PORT || 3100;
-console.log(port)
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+    console.log(`Server is running on ${port}`);
 });

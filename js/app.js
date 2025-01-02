@@ -1,5 +1,6 @@
-const API_URL = "http://localhost:3000/api/analyze";
-const APINGROK_URL = "https://291b-81-0-46-222.ngrok-free.app/api/analyze";
+const ENV = "development"; // development || production || testing ngrok
+const PUBLIC_URL =
+  ENV === "development" ? "http://localhost:3000" : "https://api.example.com";
 
 document.getElementById("image-form").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -12,7 +13,6 @@ document.getElementById("image-form").addEventListener("submit", async (e) => {
   const loadingOverlay = document.getElementById("loading-overlay");
   let response;
 
-  // Mostrar el overlay de carga
   loadingOverlay.classList.remove("d-none");
 
   try {
@@ -28,19 +28,20 @@ document.getElementById("image-form").addEventListener("submit", async (e) => {
         title: "Oops...",
         text: "Please upload an image or provide a URL.!",
       });
+      return;
     }
 
-    // Mostrar los resultados
     captionContainer.innerHTML = resultDataHtml(response);
     resultDiv.classList.remove("d-none");
   } catch (error) {
     Swal.fire({
       icon: "error",
       title: "Error",
-      text: error.message || "An unexpected error occurred. Please try again later.",
+      text:
+        error.message ||
+        "An unexpected error occurred. Please try again later.",
     });
   } finally {
-    // Ocultar el overlay de carga
     loadingOverlay.classList.add("d-none");
   }
 });
@@ -71,7 +72,7 @@ async function callAnalysePictureAPI(imageData, apiChoice, isUrl = false) {
       body.append("imageFile", imageData);
     }
 
-    const response = await fetch(`${APINGROK_URL}`, {
+    const response = await fetch(`${PUBLIC_URL}/api/analyze`, {
       method: "POST",
       body: body,
     });
@@ -104,10 +105,9 @@ function resultDataHtml(data) {
       const confidencePercentage = Number(item.confidence);
 
       return `
-      <div class="col-12">
         <div class="card border-0 shadow-sm h-100">
           <div class="card-body">
-            <h5 class="card-title">${item.name}</h5>
+            <h5 class="card-title">Name: ${item.name}</h5>
             <p class="card-text">
               Confidence: <strong>${confidencePercentage}%</strong>
             </p>
@@ -124,7 +124,6 @@ function resultDataHtml(data) {
             </div>
           </div>
         </div>
-      </div>
     `;
     })
     .join("");

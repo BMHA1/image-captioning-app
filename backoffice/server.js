@@ -15,6 +15,7 @@ app.use(cors(
 ));
 
 app.use('/api/analyze', analizePictureRoutes);
+app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 app.get('/test', (req, res) => {
     res.send('Hello World!');
 });
@@ -23,5 +24,5 @@ app.get('/test', (req, res) => {
 let port = process.env.PORT || 3100;
 console.log(port)
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+    console.log(Server is running on http://localhost:${port});
 });

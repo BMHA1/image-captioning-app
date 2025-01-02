@@ -1,0 +1,5 @@
+backoffice/node_modules/
+
+backoffice/.env
+
+backoffice/config/

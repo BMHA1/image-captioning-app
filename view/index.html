@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Captioning App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style/style.css" />
+  </head>
+  <body class="bg-light text-dark">
+    <div class="container py-5">
+      <header class="text-center mb-5">
+        <h1 class="display-4 fw-bold">Image Captioning App</h1>
+        <p class="lead">Upload an image and let AI generate captions for you!</p>
+      </header>
+
+      <div class="row justify-content-center g-5">
+        <section class="col-lg-6">
+          <form id="image-form" class="p-4 bg-white rounded shadow-sm">
+            <div class="form-check form-switch mb-4">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="input-switch"
+                role="switch"
+                aria-label="Toggle between image upload and URL input"
+              />
+              <label class="form-check-label" for="input-switch">
+                Use URL instead of uploading an image
+              </label>
+            </div>
+
+            <div id="upload-container" class="mb-4">
+              <label for="image-upload" class="form-label">Upload an Image:</label>
+              <input 
+                type="file" 
+                id="image-upload" 
+                class="form-control" 
+                accept="image/*" 
+                aria-describedby="imageHelp" 
+              />
+              <div id="imageHelp" class="form-text">Supported formats: JPG, PNG, JPEG.</div>
+            </div>
+            
+            <div id="url-container" class="mb-4 d-none">
+              <label for="image-url" class="form-label">Enter Image URL:</label>
+              <input
+                type="url"
+                id="image-url"
+                class="form-control"
+                placeholder="https://example.com/image.jpg"
+                aria-describedby="urlHelp"
+              />
+              <div id="urlHelp" class="form-text">Provide a valid image URL.</div>
+            </div>
+
+            <div class="mb-4">
+              <label for="api-select" class="form-label">Choose an AI Service:</label>
+              <select id="api-select" class="form-select" required>
+                <option value="google">Google Cloud Vision API</option>
+                <option value="azure">Microsoft Azure Computer Vision API</option>
+                <option value="clarifai">Clarifai API</option>
+              </select>
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary btn-lg">
+                <i class="bi bi-gear-fill"></i> Generate Caption
+              </button>
+            </div>
+            <div id="loading-indicator" class="d-none text-center my-3">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <p class="mt-2">Processing your image...</p>
+            </div>
+          </form>
+        </section>
+
+        <section class="col-lg-6">
+          <h2 class="text-center mb-4">How to Use</h2>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center">
+                  <div class="mb-3 text-primary">
+                    <i class="bi bi-image fs-1"></i>
+                  </div>
+                  <h5 class="card-title">Step 1</h5>
+                  <p class="card-text">Upload an image or enter its URL.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center">
+                  <div class="mb-3 text-success">
+                    <i class="bi bi-sliders fs-1"></i>
+                  </div>
+                  <h5 class="card-title">Step 2</h5>
+                  <p class="card-text">Choose an AI service from the dropdown menu.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center">
+                  <div class="mb-3 text-warning">
+                    <i class="bi bi-arrow-right-circle fs-1"></i>
+                  </div>
+                  <h5 class="card-title">Step 3</h5>
+                  <p class="card-text">Click "Generate Caption" and view the result below!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div id="result" class="mt-5 p-4 bg-white rounded shadow-sm d-none">
+        <h2 class="text-center">Generated Caption:</h2>
+        <div id="caption-container" class="lead"></div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+    <script src="../js/app.js"></script>
+  </body>
+</html>
+
